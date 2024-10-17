@@ -15,13 +15,13 @@ public class PlayerSwitcher : MonoBehaviour
     private void Start()
     {
         inputManager = GetComponent<PlayerInputManager>();
-        index = Random.Range(0, players.Count); 
+        index = 0;
         inputManager.playerPrefab = players[index];
     }
 
     public void SpawnNextPlayerPrefab(PlayerInput input)
     {
-        index = Random.Range(0, players.Count);
+        index = 1;
         inputManager.playerPrefab = players[index];
     }
 }
