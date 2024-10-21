@@ -2,29 +2,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
-using static UnityEditor.Experimental.GraphView.GraphView;
-public class PlayerActions : MonoBehaviour
+using System;
+
+public class PlayerActions2 : MonoBehaviour
 {
     [SerializeField] float speed = 6f;
     [SerializeField] public bool isFlashLightTurnedOn = false;
 
-    public static PlayerActions Instance { get; private set; }
+    public static PlayerActions2 instance;
 
     Vector2 moveValue;
     Vector2 turnValue;
-    //float turnSpeedValue; 
-        
+    //float turnSpeedValue;
+
 
     void Start()
     {
-        Instance = this;
-
-        
+        instance = this;
     }
 
-    public static PlayerActions GetInstance()
+    public static PlayerActions2 GetInstance()
     {
-        return Instance;
+        return instance;
 
     }
     void Update()
@@ -36,7 +35,7 @@ public class PlayerActions : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveValue = context.ReadValue<Vector2>() * Time.deltaTime * speed;
-       
+
     }
 
     public void Rotate(InputAction.CallbackContext context)
@@ -45,10 +44,11 @@ public class PlayerActions : MonoBehaviour
         //turnSpeedValue = context.ReadValue<float>() *Time.deltaTime * turnSpeed;
     }
 
-    public void FlashLightON(InputAction.CallbackContext context)
+    public void FlashLightON2(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
+            Debug.Log("Player 2 pressed the torch button");
             if (isFlashLightTurnedOn)
             {
                 isFlashLightTurnedOn = false;
@@ -56,8 +56,6 @@ public class PlayerActions : MonoBehaviour
             else
             {
                 isFlashLightTurnedOn = true;
-               
-
             }
 
 
